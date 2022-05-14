@@ -1,0 +1,28 @@
+<div class="col-2 min-vh-100 bg-dark text-white">
+    <br><br>
+    <!-- collab logo -->
+    <div class="mx-auto text-center">
+        <a href=""><img src="" alt="" style="width:100px; height:100px;"></a>
+    </div>
+    <br><br>
+
+    <ul class="nav flex-column ps-4 fs-5">
+        <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'accountPage' %}">Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'dashboardPage' %}">Projects</a>
+            <ul class="nav flex-column ps-4">
+                <!-- project name -->
+                <a class="nav-link text-light" href="{% url 'projectPage' %}">Project 1</a>
+
+                <!-- duplicates -->
+                <a class="nav-link text-light" href="{% url 'projectPage' %}">Project 2</a>
+                <a class="nav-link text-light" href="{% url 'projectPage' %}">Project 3</a>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'loginPage' %}">Logout</a>
+        </li>
+    </ul>
+</div>
