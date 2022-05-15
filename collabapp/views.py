@@ -32,6 +32,7 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('loginPage')
 
     context = {'form': form}
     return render(request, 'collabapp/register.html', context)
