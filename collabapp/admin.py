@@ -3,5 +3,5 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Task)
-admin.site.register(Collaborator)
+admin.site.register(Profile)
 admin.site.register(Project)

@@ -26,54 +26,59 @@
                 <div class="row justify-content-center">
                     
                     <!-- personal -->
-                    <div class="col-4 mx-5">
-                        <h4><i class="fa-solid fa-address-card"></i> Personal</h4>
-                        <hr>
-                        <div>
-                            <label for="name"><i class="fa-solid fa-user"></i> Name</label>
-                            <input type="name" class="form-control">
-                        </div>
-                        <br>
-                        <div>
-                           <label for="contact"><i class="fa-solid fa-phone"></i> Contact No.</label>
-
-                            <input type="text" class="form-control">
-                        </div>
-                        <br>
-
-                        <div class="text-end">
+                    <form method = "POST" action = "">
+                        {% csrf_token %}
+                        <div class="col-4 mx-5">
+                            
+                            <h4><i class="fa-solid fa-address-card"></i> Personal</h4>
+                            <hr>
+                            <div>
+                                <label for="name"><i class="fa-solid fa-user"></i> Name</label>
+                                {{profile.name}}
+                                
+                            </div>
                             <br>
-                            <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
-                           <a href="" class="btn btn-success border-dark"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</a>
-
-                        </div>
-                    </div>
-
-                    <div class="col-4 mx-5">
-                       <h4><i class="fa-solid fa-gear"></i> Account</h4>
-                        <hr>
-                        <div>
-                            <label for="email"><i class="fa-solid fa-at"></i> Email Address</label>
-
-                            <input type="email" class="form-control">
-                        </div>
-                        <br>
-                        <div>
-                           <label for="password"><i class="fa-solid fa-key"></i> Password</label>
-
-                            <input type="password" class="form-control">
-                        </div>
-                        <br>
-                        
-                        <div class="text-end">
+                            <div>
+                            <label for="contact"><i class="fa-solid fa-phone"></i> Contact No.</label>
+                                {{profile.contact}}
+                                
+                            </div>
                             <br>
-                            <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
-                           <a href="" class="btn btn-success border-dark"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</a>
+
+                            <div class="text-end">
+                                <br>
+                                <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
+                            <button class="btn btn-success border-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</button>
+                            </div>
+                        </div>
+                    </form>   
+                    <form method = "POST" action = ""> 
+                        {% csrf_token %}
+                        <div class="col-4 mx-5">
+                            <h4><i class="fa-solid fa-gear"></i> Account</h4>
+                                <hr>
+                                <div>
+                                    <label for="email"><i class="fa-solid fa-at"></i> Email Address</label>
+                                    {{profile.email}}
+                                    
+                                </div>
+                                <br>
+                                <div>
+                                <label for="password"><i class="fa-solid fa-key"></i> Password</label>
+
+                                    <input type="password" class="form-control">
+                                </div>
+                                <br>
+                                
+                                <div class="text-end">
+                                    <br>
+                                    <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
+                                
+                                <button class="btn btn-success border-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</button>
+                                </div>
 
                         </div>
-
-                    </div>
-
+                    </form>
 
                 </div>
 

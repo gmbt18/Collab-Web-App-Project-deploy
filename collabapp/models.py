@@ -11,16 +11,16 @@ from django.contrib.auth.models import User
 
 class Project(models.Model):
     code = models.CharField(max_length=255, null=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null = True)
     title = models.CharField(max_length=100, null=True)
-    creation_date = models.DateTimeField(default=timezone)
+    creation_date = models.DateTimeField(auto_now_add=True, null=True)
 
-class Collaborator(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, null=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=100, null=True)
     contact = models.IntegerField(null=True)
-    projects = models.ManyToManyField(Project, related_name= "members")
+    projects = models.ManyToManyField(Project, related_name= "members", blank=True)
 
     def __str__(self):
         return self.name

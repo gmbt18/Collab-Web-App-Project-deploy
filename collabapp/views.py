@@ -1,13 +1,16 @@
 from distutils import log
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
+
 from .models import *
-from .forms import CreateUserForm
+from .forms import *
 # Create your views here.
 # def index(request):
 #     return render(request, 'catalog/dashboard.html')
@@ -44,23 +47,41 @@ def logOutPage(request):
     return redirect('loginPage')
 
 def registerPage(request):
-    if request.user.is_authenticated:
-        return redirect('dashboardPage')
-    else:
-        form = CreateUserForm()
 
-        if request.method == "POST":
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('loginPage')
+    
+    form = CreateUserForm()
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
 
-        context = {'form': form}
-        return render(request, 'collabapp/register.html', context)
+            username = form.cleaned_data.get('username')
+            Profile.objects.create(
+                user=user,
+                name=user.username,
+                )
+
+            messages.success(request, 'Account was created for ' + username)
+
+            return redirect('loginPage')
+
+    context = {'form': form}
+    return render(request, 'collabapp/register.html', context)
 
 @login_required(login_url='loginPage')
 def accountPage(request):
-    return render(request, 'collabapp/account.html')
+    profile = Profile.objects.get(user=request.user)
+
+    if request.method == "POST":
+        form = EditProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+
+    else:
+        form=EditProfileForm(instance=profile)
+                
+    context = {'profile': form}
+    return render(request, 'collabapp/account.html', context)
 
 @login_required(login_url='loginPage')
 def projectPage(request):
