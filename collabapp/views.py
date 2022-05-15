@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 
@@ -19,6 +20,10 @@ def dashboardPage(request):
 
 def loginPage(request):
     return render(request, 'collabapp/login.html')
+
+def logOutPage(request):
+    logout(request)
+    return redirect('login')
 
 def registerPage(request):
     form = CreateUserForm()
