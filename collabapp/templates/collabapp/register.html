@@ -26,24 +26,19 @@
                 <div class="row bg-dark mx-auto">
 
                     <div class="col text-light">
-    
+
                         <div class="mb-3">
-                            <label for="nameInput"><i class="fa-solid fa-user"></i> Name</label></br>
+                            <label for="usernameInput"><i class="fa-solid fa-user"></i> Username</label></br>
                             {{form.username}}
                         </div>
-        
-                        <div>
-                            <label for="contactNoInput"><i class="fa-solid fa-phone"></i> Contact No</label></br>
-                            <input type="text" class="form-control">
+                        <div class="mb-3">
+                            <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br>
+                            {{form.email}}
                         </div>
                     </div>
         
                     <div class="col text-light">
         
-                        <div class="mb-3">
-                            <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br>
-                            {{form.email}}
-                        </div>
         
                         <div>
                             <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br>
@@ -51,7 +46,8 @@
                         </div>
         
                         <div>
-                            <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br>
+                            <label for="passwordInput"><i class="fa-solid fa-key"></i> Confirm 
+                                Password</label></br>
                             {{form.password2}}
                         </div>
 
