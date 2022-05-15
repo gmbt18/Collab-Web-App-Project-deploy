@@ -1,8 +1,12 @@
+from distutils import log
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
+from .models import *
 from .forms import CreateUserForm
 # Create your views here.
 # def index(request):
@@ -15,45 +19,69 @@ def indexPage(request):
     # if logged in:
     return redirect('dashboardPage')
 
+@login_required(login_url='loginPage')
 def dashboardPage(request):
     return render(request, 'collabapp/dashboard.html')
 
 def loginPage(request):
-    return render(request, 'collabapp/login.html')
+	if request.user.is_authenticated:
+		return redirect('dashboardPage')
+	else:
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password =request.POST.get('password')
 
+			user = authenticate(request, username=username, password=password)
+
+			if user is not None:
+				login(request, user)
+				return redirect('dashboardPage')
+
+		context = {}
+		return render(request, 'collabapp/login.html', context)
 def logOutPage(request):
     logout(request)
-    return redirect('login')
+    return redirect('loginPage')
 
 def registerPage(request):
-    form = CreateUserForm()
+    if request.user.is_authenticated:
+        return redirect('dashboardPage')
+    else:
+        form = CreateUserForm()
 
-    if request.method == "POST":
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('loginPage')
+        if request.method == "POST":
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('loginPage')
 
-    context = {'form': form}
-    return render(request, 'collabapp/register.html', context)
+        context = {'form': form}
+        return render(request, 'collabapp/register.html', context)
 
+@login_required(login_url='loginPage')
 def accountPage(request):
     return render(request, 'collabapp/account.html')
 
+@login_required(login_url='loginPage')
 def projectPage(request):
     return render(request, 'collabapp/project-home.html')
 
+@login_required(login_url='loginPage')
 def projectInfoPage(request):
     return render(request, 'collabapp/project-info.html')
 
+@login_required(login_url='loginPage')
 def projectMembersPage(request):
     return render(request, 'collabapp/project-members.html')
 
+@login_required(login_url='loginPage')
 def projectHistoryPage(request):
     return render(request, 'collabapp/project-history.html')
 
+@login_required(login_url='loginPage')
 def taskPage(request):
     return render(request, 'collabapp/edit-task.html')
     
+@login_required(login_url='loginPage')    
 def taskProgressPage(request):
     return render(request, 'collabapp/task-progress.html')
