@@ -8,21 +8,17 @@
 
     <ul class="nav flex-column ps-4 fs-5">
         <li class="nav-item">
-            <a class="nav-link text-light" href="{% url 'accountPage' %}">Account</a>
+           <a class="nav-link text-light" href="{% url 'accountPage' %}"><i class="fa-solid fa-user"></i>&nbsp; Account</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light" href="{% url 'dashboardPage' %}">Projects</a>
+            <a class="nav-link text-light" href="{% url 'dashboardPage' %}"><i class="fa-solid fa-layer-group"></i>&nbsp; Projects</a>
             <ul class="nav flex-column ps-4">
                 <!-- project name -->
-                <a class="nav-link text-light" href="{% url 'projectPage' %}">Project 1</a>
-
-                <!-- duplicates -->
-                <a class="nav-link text-light" href="{% url 'projectPage' %}">Project 2</a>
-                <a class="nav-link text-light" href="{% url 'projectPage' %}">Project 3</a>
+                <a class="nav-link text-light" href="{% url 'projectPage' %}"><i class="fa-solid fa-folder"></i>&nbsp; Project 1</a>
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light" href="{% url 'loginPage' %}">Logout</a>
-        </li>
+            <a class="nav-link text-light" href="{% url 'loginPage' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp; Logout</a>
+       </li>
     </ul>
 </div>

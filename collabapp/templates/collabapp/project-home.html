@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Document</title>
+   {% include 'collabapp/head-modules.html' %}
+   <title>Document</title>
 </head>
 <body>
 
@@ -17,10 +17,8 @@
             {% include 'collabapp/navbar.html' %}
     
             <div class="col-10 min-vh-100 px-5 py-4 bg-light">
-                <h1>Project 1</h1>
-                <a class="btn btn-primary btn-sm" href="{% url 'projectInfoPage' %}">Project Information</a>
-                <a class="btn btn-warning btn-sm" href="">Members</a>
-                <p>long descxription of project. Lorem Ipsum is simply dummy text of the printing and typesetting industry. orem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+               {% include 'collabapp/project-header.html' %}
+              <p>long descxription of project. Lorem Ipsum is simply dummy text of the printing and typesetting industry. orem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 <hr>
                 <br>
 
@@ -28,8 +26,8 @@
 
                     <!-- category (to do, doing, done) -->
                     <div class="col mx-3 px-0" style="max-width:250px;">
-                        <div class="border py-1 bg-success text-white text-center">
-                            <h6>To Do</h6>
+                       <div class="border py-1 bg-dark text-white text-center">
+                           <h6>To Do</h6>
                         </div>
 
                         <!-- task (tasks moved around) -->
@@ -37,13 +35,18 @@
                             <div class="card-header px-3 py-1">
                                 <h6 class="my-1">Task Name</h6>
                             </div>
-                            <div class="card-body px-3 py-1">
-                                <b>Due Date:</b><p>May 22, 2022</p>
-                                <b>Members:</b><br>
+
+                            <div class="card-body px-3 py-2 mb-3">
+                                <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>May 22, 2022</p>
+                                <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                 <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                             </div>
-                                <a class="btn fs-3 lh-1 pt-0" href="{% url 'taskPage' %}">...</a>
+                            <div class="text-end mb-2">
+                                <a class="btn btn-success fs-6 lh-1 me-2" href="{% url 'taskProgressPage' %}"><i class="fa-solid fa-bars-progress"></i> Progress</a>
+                                <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskPage' %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            </div>
+
                         </div>
 
                     </div>

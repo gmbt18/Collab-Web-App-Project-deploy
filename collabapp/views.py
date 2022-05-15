@@ -18,6 +18,9 @@ def dashboardPage(request):
 def loginPage(request):
     return render(request, 'collabapp/login.html')
 
+def registerPage(request):
+    return render(request, 'collabapp/register.html')
+
 def accountPage(request):
     return render(request, 'collabapp/account.html')
 
@@ -27,5 +30,14 @@ def projectPage(request):
 def projectInfoPage(request):
     return render(request, 'collabapp/project-info.html')
 
+def projectMembersPage(request):
+    return render(request, 'collabapp/project-members.html')
+
+def projectHistoryPage(request):
+    return render(request, 'collabapp/project-history.html')
+
 def taskPage(request):
     return render(request, 'collabapp/edit-task.html')
+    
+def taskProgressPage(request):
+    return render(request, 'collabapp/task-progress.html')
