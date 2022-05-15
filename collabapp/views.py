@@ -19,11 +19,22 @@ def dashboardPage(request):
     return render(request, 'collabapp/dashboard.html')
 
 def loginPage(request):
+
+    if request.method == "POST":
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+    context = {}
     return render(request, 'collabapp/login.html')
 
 def logOutPage(request):
     logout(request)
-    return redirect('login')
+    return redirect('loginPage')
 
 def registerPage(request):
     form = CreateUserForm()
