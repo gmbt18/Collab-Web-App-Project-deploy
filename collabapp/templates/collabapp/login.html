@@ -21,37 +21,38 @@
             <h5 class="text-white px-3">Login</h5>
             <hr class="text-white">
 
-            <div class="row bg-dark align-items-center mx-auto">
-                <div class="col text-center my-auto">
-                    <img src="" alt="" style="height:150px;width:150px">
+            <form method="POST" action="">
+                <div class="row bg-dark align-items-center mx-auto">
+                    <div class="col text-center my-auto">
+                        <img src="" alt="" style="height:150px;width:150px">
+                    </div>
+                        {% csrf_token %}
+                        <div class="col text-light">
+        
+                            <div class="mb-3">
+                                <label for="usernameInput"><i class="fa-solid fa-at"></i> Username</label>
+                                <input type="text" name="username" class="form-control">
+                            </div>
+            
+                            <div>
+                                <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <br><a class="text-decoration-none text-muted" href="{% url 'registerPage' %}">Register</a>
+                                </div>
+        
+                                <div class="col text-end">
+                                    <br>
+                                    <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
+                                    <input class="btn btn-success border-dark" type="submit">
+                                </div>
+                            </div>
+                        </div>     
                 </div>
-    
-                <div class="col text-light">
-    
-                    <div class="mb-3">
-                        <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label>
-                        <input type="email" class="form-control">
-                    </div>
-    
-                    <div>
-                        <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label>
-                        <input type="password" class="form-control">
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col">
-                            <br><a class="text-decoration-none text-muted" href="{% url 'registerPage' %}">Register</a>
-                        </div>
-
-                        <div class="col text-end">
-                            <br>
-                            <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
-                            <a href="{% url 'indexPage' %}" class="btn btn-success border-dark">Log In</a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+            </form>
 
         </div>
 
