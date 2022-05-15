@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 
 class Project(models.Model):
-    code = models.CharField(max_length=255, null=True, primary_key=True)
+    code = models.CharField(max_length=255, primary_key=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, null=True)
     creation_date = models.DateTimeField(default=timezone)
@@ -19,7 +19,7 @@ class Collaborator(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100, null=True)
-    contact = models.IntegerField(max_length=10,null=True)
+    contact = models.IntegerField(null=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     def __str__(self):
