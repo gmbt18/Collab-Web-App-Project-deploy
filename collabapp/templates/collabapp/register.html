@@ -21,47 +21,58 @@
             <h5 class="text-white px-3">Register</h5>
             <hr class="text-white">
 
-            <div class="row bg-dark mx-auto">
+            <form method = "POST" action = "">
+                {% csrf_token %}
+                <div class="row bg-dark mx-auto">
 
-                <div class="col text-light">
-
-                    <div class="mb-3">
-                        <label for="nameInput"><i class="fa-solid fa-user"></i> Name</label>
-                        <input type="text" class="form-control">
-                    </div>
+                    <div class="col text-light">
     
-                    <div>
-                        <label for="contactNoInput"><i class="fa-solid fa-phone"></i> Contact No</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-    
-                <div class="col text-light">
-    
-                    <div class="mb-3">
-                        <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label>
-                        <input type="email" class="form-control">
-                    </div>
-    
-                    <div>
-                        <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label>
-                        <input type="password" class="form-control">
-                    </div>
-    
-                    <div class="row">
-                        <div class="col">
-                            <br><a class="text-decoration-none text-muted" href="{% url 'loginPage' %}">Log in</a>
+                        <div class="mb-3">
+                            <label for="nameInput"><i class="fa-solid fa-user"></i> Name</label></br>
+                            {{form.username}}
                         </div>
-
-                        <div class="col text-end">
-                            <br>
-                            <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
-                            <a href="{% url 'indexPage' %}" class="btn btn-success border-dark">Register</a>
+        
+                        <div>
+                            <label for="contactNoInput"><i class="fa-solid fa-phone"></i> Contact No</label></br>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
-                    
+        
+                    <div class="col text-light">
+        
+                        <div class="mb-3">
+                            <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br>
+                            {{form.email}}
+                        </div>
+        
+                        <div>
+                            <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br>
+                            {{form.password1}}
+                        </div>
+        
+                        <div>
+                            <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br>
+                            {{form.password2}}
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <br><a class="text-decoration-none text-muted" href="{% url 'loginPage' %}">Log in</a>
+                            </div>
+    
+                            <div class="col text-end">
+                                <br>
+                                <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
+                                <input class="btn btn-success border-dark" type="submit">
+                            </div>
+
+                            {{form.errors}}
+                        </div>
+                        
+                    </div>
                 </div>
-            </div>
+                
+            </form>
 
         </div>
 
