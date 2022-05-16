@@ -21,13 +21,21 @@
                 <!-- enter group code -->
                 <div class="row bg-success text-white py-4 ps-3">
 
-                    <h2><i class="fa-solid fa-arrow-right-to-bracket"></i> Enter code:</h2>
-                    <div class="input-group my-1 w-25">
-                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-hashtag"></i></span>
-
-                        <input type="text" class="form-control" placeholder="Username" aria-label="groupcode">              
-                        <button type="submit" class="btn btn-dark">Join</button>
+                    <div class="row m-0 p-0 align-items-end">
+                        <div class="col">
+                            <h2><i class="fa-solid fa-arrow-right-to-bracket"></i> Enter code:</h2>
+                            <div class="input-group my-1 w-50">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-hashtag"></i></span>
+        
+                                <input type="text" class="form-control" placeholder="Username" aria-label="groupcode">              
+                                <button type="submit" class="btn btn-dark">Join</button>
+                            </div>
+                        </div>
+                        <div class="col text-end pe-5">
+                            <a class="btn btn-dark" href="{% url 'projectNewPage' %}"><i class="fa-solid fa-plus"></i>&nbsp; Create a new project</a>
+                        </div>
                     </div>
+
                 </div>
 
                 <!-- see your groups -->
@@ -63,7 +71,7 @@
                                 <br><br>
                                 <div class="text-end">
                                     <a class="btn btn-success btn-sm" href="{% url 'projectPage' %}"><i class="fa-solid fa-folder-open"></i> Open</a>
-                                    <a class="btn btn-danger btn-sm" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveProject"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
                                 </div>
                             </div>
                         </div>
@@ -74,12 +82,30 @@
                 </div>
 
             </div>
-            
 
             {% include 'collabapp/footer.html' %}
 
         </div>
         
+
+        <!-- popup when deleting -->
+        <div class="modal" id="leaveProject" tab-index="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Leave project</h5>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to leave this project?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </div>
     

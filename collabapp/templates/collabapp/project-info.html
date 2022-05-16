@@ -31,11 +31,10 @@
                            <h4><i class="fa-solid fa-sliders"></i> Project details</h4>
 
                             <div class="container bg-white p-3 mb-2 text-start" style="min-height:300px;">
-                                <p>insert details</p>
+                                <textarea class="form-control" rows="9"></textarea>
                             </div>
                             <div class="text-end">
-                               <a class="btn btn-warning" href=""><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-
+                               <a class="btn btn-success" href=""><i class="fa-solid fa-save"></i> Save</a>
                             </div>
                         </div>
                         
@@ -43,12 +42,25 @@
                            <h4><i class="fa-solid fa-user"></i> Members</h4>
 
                             <div class="container bg-white p-3 mb-2 text-start" style="min-height:300px;">
-                                <p>insert members</p>
+                                
+                                <div class="container bg-light py-1 px-2 border">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <p class="my-auto">Jose P. Rizal</p>
+                                        </div>
+                                        <!-- <div class="col align-self-end text-end">
+                                            <div class="text-end">
+                                                <a class="btn btn-sm btn-warning" href=""><i class="fa-solid fa-fw fa-pen-to-square"></i></a>
+                                                <a class="btn btn-sm btn-danger" href=""><i class="fa-solid fa-fw fa-x"></i></a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="text-end">
-                               <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a>                            
-                                <a class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i> Delete</a>
-
+                               <!-- <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a>                             -->
+                               <a class="btn btn-warning" href="{% url 'projectMembersPage' %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>                            
                             </div>
                         </div>
     
@@ -56,12 +68,25 @@
                            <h4><i class="fa-solid fa-list-check"></i> Tasks</h4>
 
                             <div class="container bg-white p-3 mb-2 text-start" style="min-height:300px;">
-                                <p>insert tasks</p>
+
+                                <div class="container bg-light py-1 px-2 border">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <p class="my-auto">Task 1</p>
+                                        </div>
+                                        <!-- <div class="col align-self-end text-end">
+                                            <div class="text-end">
+                                                <a class="btn btn-sm btn-warning" href=""><i class="fa-solid fa-fw fa-pen-to-square"></i></a>
+                                                <a class="btn btn-sm btn-danger" href=""><i class="fa-solid fa-fw fa-x"></i></a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                
                             </div>
                             <div class="text-end">
-                               <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a>                            
-                                <a class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i> Delete</a>
-
+                               <!-- <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a> -->
+                               <a class="btn btn-warning" href="{% url 'projectPage' %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>                            
                             </div>
                         </div>
                     </div>

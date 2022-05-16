@@ -88,6 +88,10 @@ def projectPage(request):
     return render(request, 'collabapp/project-home.html')
 
 @login_required(login_url='loginPage')
+def projectNewPage(request):
+    return render(request, 'collabapp/project-new.html')
+
+@login_required(login_url='loginPage')
 def projectInfoPage(request):
     return render(request, 'collabapp/project-info.html')
 
@@ -96,12 +100,20 @@ def projectMembersPage(request):
     return render(request, 'collabapp/project-members.html')
 
 @login_required(login_url='loginPage')
+def projectMembersAddPage(request):
+    return render(request, 'collabapp/project-members-add.html')
+
+@login_required(login_url='loginPage')
 def projectHistoryPage(request):
     return render(request, 'collabapp/project-history.html')
 
 @login_required(login_url='loginPage')
-def taskPage(request):
-    return render(request, 'collabapp/edit-task.html')
+def taskAddPage(request):
+    return render(request, 'collabapp/task-add.html')
+
+@login_required(login_url='loginPage')
+def taskEditPage(request):
+    return render(request, 'collabapp/task-edit.html')
     
 @login_required(login_url='loginPage')    
 def taskProgressPage(request):
