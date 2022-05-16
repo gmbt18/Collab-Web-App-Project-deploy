@@ -24,37 +24,43 @@
                 <h3><i class="fa-solid fa-plus"></i> Add Task</h3>
                 <br>
 
-                <div class="container w-50">
-                    <label for="taskNameInput">Task Name</label>
-                    <input id="taskNameInput" type="text" class="form-control" placeholder="Task name">
-                    <br>
-                    <label for="dueDateInput">Due Date</label>
-                    <input id="dueDateInput" type="date" class="form-control" placeholder="Due date">
-                    <br>
-                    <label>Status</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="taskTypeInput" id="todo" checked>
-                        <label class="form-check-label" for="todo">To Do</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="taskTypeInput" id="doing">
-                        <label class="form-check-label" for="doing">Doing</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="taskTypeInput" id="needsChecking">
-                        <label class="form-check-label" for="needsChecking">Needs Checking</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="taskTypeInput" id="done">
-                        <label class="form-check-label" for="done">Done</label>
-                    </div>
+                <form method = "POST" action = "">
+                    {% csrf_token %}
+                    <div class="container w-50">
+                        <label for="taskNameInput">Task Name</label>
+                        <div class ="form-control">
+                            {{form.name}}
+                        </div>
+                        <br>
+                        <label for="dueDateInput">Due Date</label>
+                        <div class ="form-control">
+                            {{form.due_date}}
+                        </div>
+                        <br>
+                        <label>Status</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskTypeInput" id="todo" checked>
+                            <label class="form-check-label" for="todo">To Do</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskTypeInput" id="doing">
+                            <label class="form-check-label" for="doing">Doing</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskTypeInput" id="needsChecking">
+                            <label class="form-check-label" for="needsChecking">Needs Checking</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskTypeInput" id="done">
+                            <label class="form-check-label" for="done">Done</label>
+                        </div>
 
-                    <div class="text-end">
-                        <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a>                            
-                        <a class="btn btn-secondary" href="{% url 'projectPage' %}"><i class="fa-solid fa-x"></i> Cancel</a>
+                        <div class="text-end">
+                            <button class="btn btn-success" type = "Submit"><i class="fa-solid fa-plus"></i> Add</a>                            
+                            <a class="btn btn-secondary" href="{% url 'projectPage' %}"><i class="fa-solid fa-x"></i> Cancel</a>
+                        </div>
                     </div>
-                </div>
-
+                </form>
             </div>
             
             {% include 'collabapp/footer.html' %}

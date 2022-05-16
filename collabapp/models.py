@@ -15,6 +15,9 @@ class Project(models.Model):
     title = models.CharField(max_length=100, null=True)
     creation_date = models.DateTimeField(auto_now_add=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
 class Profile(models.Model):
     user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=True)
@@ -34,7 +37,7 @@ class Task(models.Model):
     )
     name = models.CharField(max_length=100, null=True)
     due_date = models.DateField()
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    #project = models.ForeignKey(Project, on_delete=models.CASCADE)
     
 
     def __str__(self):

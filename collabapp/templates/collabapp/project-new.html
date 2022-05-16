@@ -23,17 +23,19 @@
                 <hr>
                 <br>
 
-                <div class="container w-50">
-                    <label for="ProjectNameInput">Project Name</label>
-                    <input id="ProjectNameInput" type="text" class="form-control" placeholder="Project name">
-                    <br>
+                <form method = "POST" action = "">
+                    {% csrf_token %}
+                    <div class="container w-50">
+                        <label for="ProjectNameInput">Project Name</label>
+                        {{form.title}}
+                        <br>
 
-                    <div class="text-end">
-                        <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Create</a>                            
-                        <a class="btn btn-danger" href="{% url 'dashboardPage' %}"><i class="fa-solid fa-x"></i> Cancel</a>
+                        <div class="text-end">
+                            <button class = "btn btn-success" type = "Submit"><i class="fa-solid fa-plus"></i> Create</a>                           
+                            <a class="btn btn-danger" href="{% url 'dashboardPage' %}"><i class="fa-solid fa-x"></i> Cancel</a>
+                        </div>
                     </div>
-                </div>
-
+                </form>
             </div>
             
             {% include 'collabapp/footer.html' %}
