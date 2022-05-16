@@ -44,7 +44,12 @@
                                 
                             </div>
                             <br>
-
+                            <div>
+                                <label for="email"><i class="fa-solid fa-at"></i> Email Address</label>
+                                {{usr.email}}
+                                
+                            </div>
+                            <br>
                             <div class="text-end">
                                 <br>
                                 <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
@@ -53,22 +58,27 @@
                         </div>
                     </form>   
                     <form method = "POST" action = ""> 
-                        {% csrf_token %}
+                         {% csrf_token %}
                         <div class="col-4 mx-5">
                             <h4><i class="fa-solid fa-gear"></i> Account</h4>
                                 <hr>
                                 <div>
-                                    <label for="email"><i class="fa-solid fa-at"></i> Email Address</label>
-                                    {{profile.email}}
-                                    
+                                <label for="password"><i class="fa-solid fa-key"></i> Old Password</label>
+                                {{pw.old_password}}  
                                 </div>
                                 <br>
                                 <div>
-                                <label for="password"><i class="fa-solid fa-key"></i> Password</label>
-
-                                    <input type="password" class="form-control">
+                                <label for="password"><i class="fa-solid fa-key"></i> New Password</label>
+                                {{pw.new_password1}}  
+                                </div>
+                                
+                                <br>
+                                <div>
+                                <label for="password"><i class="fa-solid fa-key"></i> Confirm New Password</label>
+                                {{pw.new_password2}}  
                                 </div>
                                 <br>
+                                
                                 
                                 <div class="text-end">
                                     <br>
@@ -76,7 +86,6 @@
                                 
                                 <button class="btn btn-success border-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</button>
                                 </div>
-
                         </div>
                     </form>
 
