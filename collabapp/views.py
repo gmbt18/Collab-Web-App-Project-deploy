@@ -89,7 +89,16 @@ def projectPage(request):
 
 @login_required(login_url='loginPage')
 def projectNewPage(request):
-    return render(request, 'collabapp/project-new.html')
+    project_form = ProjectForm()
+
+    if request.method == "POST":
+        project_form = ProjectForm(request.POST)
+        if project_form.is_valid():
+            project_form.save()
+            return redirect("dashboardPage")
+
+    context = {'form': project_form}
+    return render(request, 'collabapp/project-new.html', context)
 
 @login_required(login_url='loginPage')
 def projectInfoPage(request):
@@ -109,7 +118,16 @@ def projectHistoryPage(request):
 
 @login_required(login_url='loginPage')
 def taskAddPage(request):
-    return render(request, 'collabapp/task-add.html')
+    task_form = TaskForm()
+    
+    if request.method == "POST":
+        task_form = TaskForm(request.POST)
+        if task_form.is_valid():
+            task_form.save()
+            return redirect("projectPage")
+    
+    context = {'form': task_form}
+    return render(request, 'collabapp/task-add.html', context)
 
 @login_required(login_url='loginPage')
 def taskEditPage(request):
