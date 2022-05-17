@@ -2,7 +2,9 @@
     <br><br>
     <!-- collab logo -->
     <div class="mx-auto text-center">
-        <a href="{% url 'dashboardPage' %}"><img src="" alt="" style="width:100px; height:100px;"></a>
+        {% load static %}
+        <a href="{% url 'dashboardPage' %}">
+            <img src="{% static 'assets/logowhite.png'%}" alt="logo" style="width:120px; height:120px;"></a>
     </div>
     <br><br>
 
