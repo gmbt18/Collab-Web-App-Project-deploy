@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,11 +30,11 @@
 
                         <div class="mb-3">
                             <label for="usernameInput"><i class="fa-solid fa-user"></i> Username</label></br>
-                            {{form.username}}
+                            {{form.username | as_crispy_field}}
                         </div>
                         <div class="mb-3">
                             <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br>
-                            {{form.email}}
+                            {{form.email | as_crispy_field}}
                         </div>
                     </div>
         
@@ -42,13 +43,13 @@
         
                         <div>
                             <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br>
-                            {{form.password1}}
+                            {{form.password1 | as_crispy_field}}
                         </div>
         
                         <div>
                             <label for="passwordInput"><i class="fa-solid fa-key"></i> Confirm 
                                 Password</label></br>
-                            {{form.password2}}
+                            {{form.password2 | as_crispy_field}}
                         </div>
 
                         <div class="row">
