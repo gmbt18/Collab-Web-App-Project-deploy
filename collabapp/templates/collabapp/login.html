@@ -24,8 +24,9 @@
 
             <form method="POST" action="">
                 <div class="row bg-dark align-items-center mx-auto">
+                    {% load static %}
                     <div class="col text-center my-auto">
-                        <img src="" alt="" style="height:150px;width:150px">
+                        <img src="{% static 'assets/logowhite.png' %}" alt="logo" style="height:150px;width:150px">
                     </div>
                         {% csrf_token %}
                         <div class="col text-light">
