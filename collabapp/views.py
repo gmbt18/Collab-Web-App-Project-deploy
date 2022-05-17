@@ -105,7 +105,10 @@ def projectNewPage(request):
     if request.method == "POST":
         project_form = ProjectForm(request.POST)
         if project_form.is_valid():
-            project_form.save()
+            instance=project_form.save(commit=False)
+            instance.owner=request.user
+            instance.save()
+            
             return redirect("dashboardPage")
 
     context = {'form': project_form}
