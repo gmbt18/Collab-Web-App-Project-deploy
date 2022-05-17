@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +28,7 @@
                     {% csrf_token %}
                     <div class="container w-50">
                         <label for="ProjectNameInput">Project Name</label>
-                        {{form.title}}
+                        {{form.title | as_crispy_field}}
                         <br>
 
                         <div class="text-end">

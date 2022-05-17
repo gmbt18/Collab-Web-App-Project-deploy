@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,13 +35,13 @@
                             <hr>
                             <div>
                                 <label for="name"><i class="fa-solid fa-user"></i> Name</label>
-                                {{profile.name}}
+                                {{profile.name | as_crispy_field}}
                                 
                             </div>
                             <br>
                             <div>
                             <label for="contact"><i class="fa-solid fa-phone"></i> Contact No.</label>
-                                {{profile.contact}}
+                                {{profile.contact | as_crispy_field}}
                                 
                             </div>
                             <br>
@@ -59,7 +60,7 @@
                                 <hr>
                                 <div>
                                     <label for="email"><i class="fa-solid fa-at"></i> Email Address</label>
-                                    {{profile.email}}
+                                    {{profile.email | as_crispy_field}}
                                     
                                 </div>
                                 <br>
