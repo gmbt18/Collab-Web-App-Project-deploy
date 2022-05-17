@@ -18,8 +18,7 @@ class Project(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=True)
-    email = models.CharField(max_length=100, null=True)
-    contact = models.IntegerField(null=True)
+    contact = models.CharField(max_length=100, null=True)
     projects = models.ManyToManyField(Project, related_name= "members", blank=True)
 
     def __str__(self):

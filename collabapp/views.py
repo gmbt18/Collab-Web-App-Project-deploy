@@ -2,8 +2,8 @@ from distutils import log
 from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout ,update_session_auth_hash
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -70,18 +70,29 @@ def registerPage(request):
 
 @login_required(login_url='loginPage')
 def accountPage(request):
-    profile = Profile.objects.get(user=request.user)
-
     if request.method == "POST":
-        form = EditProfileForm(request.POST, instance=profile)
-        if form.is_valid():
+        form = EditProfileForm(request.POST, instance=request.user.profile)
+        u = EditUserForm(request.POST, instance=request.user)
+        pw = PasswordChangeForm(data=request.POST, user=request.user )
+        if form.is_valid() and u.is_valid():
             form.save()
+            u.save()
+            
+        if pw.is_valid():
+            pw.save()
+            update_session_auth_hash(request, pw.user)
+           
+        return redirect('accountPage')
 
     else:
-        form=EditProfileForm(instance=profile)
-                
-    context = {'profile': form}
-    return render(request, 'collabapp/account.html', context)
+        form=EditProfileForm(instance=request.user.profile)
+        u = EditUserForm(instance=request.user)
+        pw = PasswordChangeForm(request.user)
+        context = {'profile': form,'usr': u, 'pw':pw}
+        return render(request, 'collabapp/account.html', context) 
+
+       
+    
 
 @login_required(login_url='loginPage')
 def projectPage(request):
