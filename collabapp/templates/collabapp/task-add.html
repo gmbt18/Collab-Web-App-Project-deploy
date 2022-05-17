@@ -30,12 +30,12 @@
                     <div class="container w-50">
                         <label for="taskNameInput">Task Name</label>
                         <div class ="form-control">
-                            {{form.name}}
+                            {{form.name | as_crispy_field}}
                         </div>
                         <br>
                         <label for="dueDateInput">Due Date</label>
                         <div class ="form-control">
-                            {{form.due_date}}
+                            {{form.due_date | as_crispy_field}}
                         </div>
                         <br>
                         <label>Status</label>
