@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
     {% include 'collabapp/head-modules.html' %}
-    <title>Document</title>
+    <title>Account</title>
 </head>
 <body>
 
@@ -27,26 +27,26 @@
                 <div class="row justify-content-center">
                     
                     <!-- personal -->
-                    <form method = "POST" action = "">
-                        {% csrf_token %}
-                        <div class="col-4 mx-5">
+                    <div class="col-4 mx-5">
+                        <form method = "POST" action = "">
+                                {% csrf_token %}
                             
                             <h4><i class="fa-solid fa-address-card"></i> Personal</h4>
                             <hr>
                             <div>
-                                <label for="name"><i class="fa-solid fa-user"></i> Name</label>
+                                <!-- <label for="name"><i class="fa-solid fa-user"></i> Name</label> -->
                                 {{profile.name | as_crispy_field}}
                                 
                             </div>
                             <br>
                             <div>
-                            <label for="contact"><i class="fa-solid fa-phone"></i> Contact No.</label>
+                            <!-- <label for="contact"><i class="fa-solid fa-phone"></i> Contact No.</label> -->
                                 {{profile.contact | as_crispy_field}}
                                 
                             </div>
                             <br>
                             <div>
-                                <label for="email"><i class="fa-solid fa-at"></i> Email Address</label>
+                                <!-- <label for="email"><i class="fa-solid fa-at"></i> Email Address</label> -->
                                 {{usr.email | as_crispy_field}}
                                 
                             </div>
@@ -56,29 +56,29 @@
                                 <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
                             <button class="btn btn-success border-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</button>
                             </div>
-                        </div>
-                    </form>   
-                    <form method = "POST" action = ""> 
-                         {% csrf_token %}
-                        <div class="col-4 mx-5">
+                        </form>   
+                    </div>
+                    <div class="col-4 mx-5">
+                        <form method = "POST" action = ""> 
+                            {% csrf_token %}
                             <h4><i class="fa-solid fa-gear"></i> Account</h4>
                                 <hr>
                                 <div>
 
-                                <label for="password"><i class="fa-solid fa-key"></i> Old Password</label>
-                                {{pw.old_password}}
+                                <!-- <label for="password"><i class="fa-solid fa-key"></i> Old Password</label> -->
+                                {{pw.old_password | as_crispy_field}}
 
                                 </div>
                                 <br>
                                 <div>
-                                <label for="password"><i class="fa-solid fa-key"></i> New Password</label>
-                                {{pw.new_password1}}  
+                                <!-- <label for="password"><i class="fa-solid fa-key"></i> New Password</label> -->
+                                {{pw.new_password1 | as_crispy_field}}  
                                 </div>
                                 
                                 <br>
                                 <div>
-                                <label for="password"><i class="fa-solid fa-key"></i> Confirm New Password</label>
-                                {{pw.new_password2}}  
+                                <!-- <label for="password"><i class="fa-solid fa-key"></i> Confirm New Password</label> -->
+                                {{pw.new_password2 | as_crispy_field}}  
                                 </div>
                                 <br>
                                 
@@ -89,8 +89,8 @@
                                 
                                 <button class="btn btn-success border-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</button>
                                 </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
 
                 </div>
 

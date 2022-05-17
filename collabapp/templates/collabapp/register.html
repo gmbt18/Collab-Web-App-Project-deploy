@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
     {% include 'collabapp/head-modules.html' %}
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
 
 
     <!-- contenthere -->
     <div class="container-fluid bg-light vh-100 px-0">
-        <div class="container-fluid bg-secondary mx-0" style="height:10%"></div>
-        <div class="container-fluid" style="height:15%;"></div>
+        <div class="container-fluid bg-secondary mx-0" style="height:8%"></div>
+        <div class="container-fluid" style="height:7%;"></div>
 
-        <div class="container-fluid bg-dark p-3 w-50" style="height:45%">
+        <div class="container-fluid bg-dark p-3 w-50" style="height:65%">
 
             <h5 class="text-white px-3">Register</h5>
             <hr class="text-white">
@@ -29,11 +29,11 @@
                     <div class="col text-light">
 
                         <div class="mb-3">
-                            <label for="usernameInput"><i class="fa-solid fa-user"></i> Username</label></br>
+                            <!-- <label for="usernameInput"><i class="fa-solid fa-user"></i> Username</label></br> -->
                             {{form.username | as_crispy_field}}
                         </div>
                         <div class="mb-3">
-                            <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br>
+                            <!-- <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br> -->
                             {{form.email | as_crispy_field}}
                         </div>
                     </div>
@@ -42,13 +42,12 @@
         
         
                         <div>
-                            <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br>
+                            <!-- <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br> -->
                             {{form.password1 | as_crispy_field}}
                         </div>
         
                         <div>
-                            <label for="passwordInput"><i class="fa-solid fa-key"></i> Confirm 
-                                Password</label></br>
+                            <!-- <label for="passwordInput"><i class="fa-solid fa-key"></i> Confirm Password</label></br> -->
                             {{form.password2 | as_crispy_field}}
                         </div>
 
@@ -60,7 +59,7 @@
                             <div class="col text-end">
                                 <br>
                                 <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
-                                <input class="btn btn-success border-dark" type="submit">
+                                <input class="btn btn-success border-dark" type="submit" value="Register">
                             </div>
 
                         </div>
@@ -74,9 +73,9 @@
 
 
 
-        <div class="container-fluid" style="height:15%;"></div>
+        <div class="container-fluid" style="height:8%;"></div>
 
-        <div class="container-fluid bg-secondary mx-0" style="height:15%;">
+        <div class="container-fluid bg-secondary mx-0" style="height:12%;">
             <br><br>
         </div>
     </div>

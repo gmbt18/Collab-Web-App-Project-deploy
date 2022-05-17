@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
     {% include 'collabapp/head-modules.html' %}
-    <title>Document</title>
+    <title>Create a project</title>
 </head>
 <body>
 
@@ -27,12 +27,12 @@
                 <form method = "POST" action = "">
                     {% csrf_token %}
                     <div class="container w-50">
-                        <label for="ProjectNameInput">Project Name</label>
+                        <!-- <label for="ProjectNameInput">Project Name</label> -->
                         {{form.title | as_crispy_field}}
                         <br>
 
                         <div class="text-end">
-                            <button class = "btn btn-success" type = "Submit"><i class="fa-solid fa-plus"></i> Create</a>                           
+                            <button class = "btn btn-success" type = "Submit"><i class="fa-solid fa-plus"></i> Create</button>                           
                             <a class="btn btn-danger" href="{% url 'dashboardPage' %}"><i class="fa-solid fa-x"></i> Cancel</a>
                         </div>
                     </div>

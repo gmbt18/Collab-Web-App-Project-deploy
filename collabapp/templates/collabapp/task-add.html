@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
     {% include 'collabapp/head-modules.html' %}
-    <title>Document</title>
+    <title>Add a task</title>
 </head>
 <body>
 
@@ -28,15 +28,11 @@
                 <form method = "POST" action = "">
                     {% csrf_token %}
                     <div class="container w-50">
-                        <label for="taskNameInput">Task Name</label>
-                        <div class ="form-control">
-                            {{form.name | as_crispy_field}}
-                        </div>
+                        <!-- <label for="taskNameInput">Task Name</label> -->
+                        {{form.name | as_crispy_field}}
                         <br>
-                        <label for="dueDateInput">Due Date</label>
-                        <div class ="form-control">
-                            {{form.due_date | as_crispy_field}}
-                        </div>
+                        <!-- <label for="dueDateInput">Due Date</label> -->
+                        {{form.due_date | as_crispy_field}}
                         <br>
                         <label>Status</label>
                         <div class="form-check">
@@ -57,7 +53,7 @@
                         </div>
 
                         <div class="text-end">
-                            <button class="btn btn-success" type = "Submit"><i class="fa-solid fa-plus"></i> Add</a>                            
+                            <button class="btn btn-success" type = "Submit"><i class="fa-solid fa-plus"></i> Add</button>                            
                             <a class="btn btn-secondary" href="{% url 'projectPage' %}"><i class="fa-solid fa-x"></i> Cancel</a>
                         </div>
                     </div>

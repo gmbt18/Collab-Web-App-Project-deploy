@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap -->
     {% include 'collabapp/head-modules.html' %}
-    <title>Document</title>
+    <title>Progress Report</title>
 </head>
 <body>
 
@@ -50,7 +50,8 @@
                     </div>
                     <br>
                     <div class="text-end">
-                        <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a>                            
+                        <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a>
+                        <a class="btn btn-secondary" href="{% url 'projectPage' %}"><i class="fa-solid fa-arrow-left"></i> Go back</a>                            
                     </div>
 
                 </div>
