@@ -18,5 +18,6 @@ urlpatterns = [
     path('project/<int:id>/task/<int:td>/taskEdit', views.taskEditPage, name='taskEditPage'),
     path('project/<int:id>/taskProgress', views.taskProgressPage, name='taskProgressPage'),
     path('leave/<int:id>/', views.leaveProject, name = 'leave'),
-    path('delete/<int:id>/', views.deleteTask, name = 'deleteTask')
+    path('delete/<int:id>/', views.deleteTask, name = 'deleteTask'),
+    path('join/<int:id>/', views.joinTask, name = 'joinTask')
 ]

@@ -26,15 +26,6 @@ class Project(models.Model):
             return "Members: " + s
         else:
             return "Member: " + s
-    
-class Profile(models.Model):
-    user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, null=True)
-    contact = models.CharField(max_length=100, null=True)
-    projects = models.ManyToManyField(Project, related_name= "members", blank=True)
-
-    def __str__(self):
-        return self.name
 
 class Task(models.Model):
     STATUS = (
@@ -51,3 +42,19 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def getMembers(self):
+        task = self.task_members.all()
+        t = list(task)
+        return t
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, null=True)
+    contact = models.CharField(max_length=100, null=True)
+    projects = models.ManyToManyField(Project, related_name= "members", blank=True)
+    tasks = models.ManyToManyField(Task, related_name= "task_members", blank=True)
+
+    def __str__(self):
+        return self.name

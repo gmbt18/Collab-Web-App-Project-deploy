@@ -52,10 +52,12 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
-                                    <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
-                                    <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                    {% for member in task.getMembers %}
+                                        {{member.name}}
+                                    {% endfor %}
                                 </div>
                                 <div class="text-end mb-2">
+                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-pen-to-square"></i> Join</a>
                                     <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <a class="btn btn-success fs-6 lh-1 me-2" href="{% url 'deleteTask' task.id %}"><i class="fa-solid fa-bars-progress"></i> Delete</a>
                                 </div>
@@ -91,10 +93,14 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
+                                    {% for member in task.getMembers %}
+                                        {{member.name}}
+                                    {% endfor %}
                                     <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2">
+                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-pen-to-square"></i> Join</a>
                                     <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <a class="btn btn-success fs-6 lh-1 me-2" href="{% url 'deleteTask' task.id %}"><i class="fa-solid fa-bars-progress"></i> Delete</a>
                                 </div>
@@ -130,10 +136,14 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
+                                    {% for member in task.getMembers %}
+                                        {{member.name}}
+                                    {% endfor %}
                                     <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2">
+                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-pen-to-square"></i> Join</a>
                                     <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <a class="btn btn-success fs-6 lh-1 me-2" href="{% url 'deleteTask' task.id %}"><i class="fa-solid fa-bars-progress"></i> Delete</a>
                                 </div>
@@ -169,10 +179,14 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
+                                    {% for member in task.getMembers %}
+                                        {{member.name}}
+                                    {% endfor %}
                                     <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2">
+                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-pen-to-square"></i> Join</a>
                                     <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <a class="btn btn-success fs-6 lh-1 me-2" href="{% url 'deleteTask' task.id %}"><i class="fa-solid fa-bars-progress"></i> Delete</a>
                                 </div>
