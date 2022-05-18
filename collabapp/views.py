@@ -111,7 +111,10 @@ def accountPage(request):
 @login_required(login_url='loginPage')
 def projectPage(request, id):
     project = Project.objects.get(id=id)
-    context = {'project':project}
+    tasks = Task.objects.filter(project__id=project.id)
+    tl = list(tasks)
+
+    context = {'project':project, 'tasks': tl }
     return render(request, 'collabapp/project-home.html', context)
 
 @login_required(login_url='loginPage')
@@ -159,16 +162,20 @@ def projectHistoryPage(request, id):
     return render(request, 'collabapp/project-history.html', context)
 
 @login_required(login_url='loginPage')
-def taskAddPage(request):
+def taskAddPage(request, id):
     task_form = TaskForm()
+    project = Project.objects.get(id=id)
     
     if request.method == "POST":
         task_form = TaskForm(request.POST)
         if task_form.is_valid():
-            task_form.save()
-            return redirect("projectPage")
+            instance = task_form.save()
+            instance.project = project
+            instance.save()
+            
+            return redirect("projectPage", id=project.id)
     
-    context = {'form': task_form}
+    context = {'form': task_form, 'project': project}
     return render(request, 'collabapp/task-add.html', context)
 
 @login_required(login_url='loginPage')
