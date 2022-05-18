@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,18 +30,15 @@
                             <h4><i class="fa-solid fa-gear"></i> Project Information</h4>
                             <hr>
                             <div>
-                                <label for="name"> Project name</label>
-                                <input class="form-control" type="text" placeholder="Project name">
+                                {{form.title | as_crispy_field}}
                             </div>
                             <br>
                             <div>
-                                <label for="name"> Project code</label>
-                                <input class="form-control" type="text" placeholder="Project code">
+                                {{form.code | as_crispy_field}}
                             </div>
                             <br>
                             <div>
-                                <label for="name"> Project Description</label>
-                                <textarea class="form-control" name="projectDesc" id="projectDesc" rows="3" placeholder="Project description"></textarea>
+                                {{form.description | as_crispy_field}}
                             </div>
                             <br>
                             <div class="text-end">

@@ -10,6 +10,7 @@ class Project(models.Model):
     code = models.CharField(max_length=255, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null = True)
     title = models.CharField(max_length=100, null=True)
+    description = models.CharField(max_length=1000, null=True)
     creation_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -25,15 +26,6 @@ class Project(models.Model):
             return "Members: " + s
         else:
             return "Member: " + s
-    
-class Profile(models.Model):
-    user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, null=True)
-    contact = models.CharField(max_length=100, null=True)
-    projects = models.ManyToManyField(Project, related_name= "members", blank=True)
-
-    def __str__(self):
-        return self.name
 
 class Task(models.Model):
     STATUS = (
@@ -44,9 +36,25 @@ class Task(models.Model):
     )
     name = models.CharField(max_length=100, null=True)
     due_date = models.DateField()
-    #project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    status = models.CharField(max_length=100, choices=STATUS, default = "To-Do")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tasks", null=True)
     
-
     def __str__(self):
         return self.name
 
+    @property
+    def getMembers(self):
+        task = self.task_members.all()
+        t = list(task)
+        return t
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, null=True)
+    contact = models.CharField(max_length=100, null=True)
+    projects = models.ManyToManyField(Project, related_name= "members", blank=True)
+    tasks = models.ManyToManyField(Task, related_name= "task_members", blank=True)
+
+    def __str__(self):
+        return self.name

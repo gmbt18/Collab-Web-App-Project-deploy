@@ -21,13 +21,16 @@ class ProjectForm(ModelForm):
         }
 
 class TaskForm(ModelForm):
+    status = forms.ChoiceField(choices=Task.STATUS)
+
     class Meta:
         model = Task
-        fields = ['name', 'due_date']
+        fields = ['name', 'due_date', 'status']
 
         labels = {
             'name' : 'Task Name',
-            'due_date' : 'Due Date'
+            'due_date' : 'Due Date',
+            'status': 'Status'
         }
 
 class EditUserForm(UserChangeForm):
@@ -45,4 +48,28 @@ class EditProfileForm(ModelForm):
 
         labels = {
             'contact' : 'Contact No.',
+        }
+
+class EditProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'code', 'description']
+
+        labels = {
+            'title': 'Project Name',
+            'code': 'Project Code',
+            'description': 'Project Description'
+        }
+
+class EditTaskForm(ModelForm):
+    status = forms.ChoiceField(choices=Task.STATUS)
+
+    class Meta:
+        model = Task
+        fields = ['name', 'due_date', 'status']
+
+        labels = {
+            'name' : 'Task Name',
+            'due_date' : 'Due Date',
+            'status' : 'Status'
         }

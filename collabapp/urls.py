@@ -12,10 +12,12 @@ urlpatterns = [
     path('project/<int:id>/', views.projectPage, name='projectPage'),
     path('project/<int:id>/info', views.projectInfoPage, name='projectInfoPage'),
     path('project/<int:id>/members', views.projectMembersPage, name='projectMembersPage'),
-    path('project/<int:id>/membersadd', views.projectMembersAddPage, name='projectMembersAddPage'),
+    path('project/<int:id>/membersAdd', views.projectMembersAddPage, name='projectMembersAddPage'),
     path('project/<int:id>/history', views.projectHistoryPage, name='projectHistoryPage'),
-    path('taskAdd', views.taskAddPage, name='taskAddPage'),
-    path('taskEdit', views.taskEditPage, name='taskEditPage'),
-    path('taskProgress', views.taskProgressPage, name='taskProgressPage'),
-    path('leave/<int:id>/', views.leaveProject, name = 'leave')
+    path('project/<int:id>/taskAdd', views.taskAddPage, name='taskAddPage'),
+    path('project/<int:id>/task/<int:td>/taskEdit', views.taskEditPage, name='taskEditPage'),
+    path('project/<int:id>/taskProgress', views.taskProgressPage, name='taskProgressPage'),
+    path('leave/<int:id>/', views.leaveProject, name = 'leave'),
+    path('delete/<int:id>/', views.deleteTask, name = 'deleteTask'),
+    path('join/<int:id>/', views.joinTask, name = 'joinTask')
 ]
