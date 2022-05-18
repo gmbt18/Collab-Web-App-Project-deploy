@@ -57,8 +57,11 @@
                                     {% endfor %}
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask1"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask1"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask1"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
@@ -95,7 +98,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>
@@ -139,8 +142,11 @@
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask2"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask2"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask2"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
@@ -177,7 +183,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>
@@ -221,8 +227,11 @@
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask3"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask3"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask3"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
@@ -259,7 +268,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>
@@ -304,8 +313,11 @@
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask4"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask4"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask4"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
@@ -342,7 +354,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>

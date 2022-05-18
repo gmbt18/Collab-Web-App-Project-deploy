@@ -109,6 +109,7 @@ def accountPage(request):
 
 @login_required(login_url='loginPage')
 def projectPage(request, id):
+    puser = request.user.profile
     project = Project.objects.get(id=id)
 
     tasks_to_do = Task.objects.filter(project__id=project.id).filter(status="To-Do")
@@ -123,7 +124,7 @@ def projectPage(request, id):
     tasks_done = Task.objects.filter(project__id=project.id).filter(status="Done")
     tdn = list(tasks_done)
 
-    context = {'project':project, 'tasks_to_do': ttd, 'tasks_doing': td, "tasks_needs_checking": tnc, "tasks_done": tdn}
+    context = {'project':project, 'tasks_to_do': ttd, 'tasks_doing': td, "tasks_needs_checking": tnc, "tasks_done": tdn, 'user': puser}
     return render(request, 'collabapp/project-home.html', context)
 
 @login_required(login_url='loginPage')
@@ -244,6 +245,14 @@ def joinTask(request, id):
     project = task.project.id
     return redirect("projectPage", id=project)
     
+@login_required(login_url='loginPage')
+def leaveTask(request, id):
+    task = Task.objects.get(id=id)
+    project = task.project.id
+    puser = request.user.profile
+    puser.tasks.remove(task)
+    return redirect("projectPage", id=project)
+
 
 def errorPageNotFound(request, exception):
     return render(request,'collabapp/page-not-found.html')
