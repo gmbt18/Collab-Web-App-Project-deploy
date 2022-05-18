@@ -48,3 +48,14 @@ class EditProfileForm(ModelForm):
         labels = {
             'contact' : 'Contact No.',
         }
+
+class EditProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'code', 'description']
+
+        labels = {
+            'title': 'Project Name',
+            'code': 'Project Code',
+            'description': 'Project Description'
+        }

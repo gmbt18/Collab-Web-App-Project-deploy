@@ -56,13 +56,12 @@ def loginPage(request):
 
 		context = {}
 		return render(request, 'collabapp/login.html', context)
+
 def logOutPage(request):
     logout(request)
     return redirect('loginPage')
 
 def registerPage(request):
-
-    
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
@@ -150,7 +149,15 @@ def projectNewPage(request):
 @login_required(login_url='loginPage')
 def projectInfoPage(request, id):
     project = Project.objects.get(id=id)
-    context = {'project':project}
+    form = EditProjectForm(instance=project)
+
+    if request.method == 'POST':
+        form = EditProjectForm(request.POST, instance=project)
+        if form.is_valid:
+            form.save()
+            return redirect("projectPage")
+
+    context = {'project':project, 'form': form}
     return render(request, 'collabapp/project-info.html', context)
 
 @login_required(login_url='loginPage')
