@@ -135,20 +135,28 @@ def projectNewPage(request):
     return render(request, 'collabapp/project-new.html', context)
 
 @login_required(login_url='loginPage')
-def projectInfoPage(request):
-    return render(request, 'collabapp/project-info.html')
+def projectInfoPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-info.html', context)
 
 @login_required(login_url='loginPage')
-def projectMembersPage(request):
-    return render(request, 'collabapp/project-members.html')
+def projectMembersPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-members.html', context)
 
 @login_required(login_url='loginPage')
-def projectMembersAddPage(request):
-    return render(request, 'collabapp/project-members-add.html')
+def projectMembersAddPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-members-add.html', context)
 
 @login_required(login_url='loginPage')
-def projectHistoryPage(request):
-    return render(request, 'collabapp/project-history.html')
+def projectHistoryPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-history.html', context)
 
 @login_required(login_url='loginPage')
 def taskAddPage(request):
