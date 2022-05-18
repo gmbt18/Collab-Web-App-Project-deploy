@@ -8,12 +8,14 @@ urlpatterns = [
     path('logout/', views.logOutPage, name="logout"),
     path('register', views.registerPage, name='registerPage'),
     path('account/', views.accountPage, name='accountPage'),
+
     path('project-new', views.projectNewPage, name='projectNewPage'),
     path('project/<int:id>/', views.projectPage, name='projectPage'),
-    path('projectInfo', views.projectInfoPage, name='projectInfoPage'),
-    path('projectMembers', views.projectMembersPage, name='projectMembersPage'),
-    path('projectMembersAdd', views.projectMembersAddPage, name='projectMembersAddPage'),
-    path('projectHistory', views.projectHistoryPage, name='projectHistoryPage'),
+    path('project/<int:id>/info', views.projectInfoPage, name='projectInfoPage'),
+    path('project/<int:id>/members', views.projectMembersPage, name='projectMembersPage'),
+    path('project/<int:id>/membersadd', views.projectMembersAddPage, name='projectMembersAddPage'),
+    path('project/<int:id>/history', views.projectHistoryPage, name='projectHistoryPage'),
+    
     path('taskAdd', views.taskAddPage, name='taskAddPage'),
     path('taskEdit', views.taskEditPage, name='taskEditPage'),
     path('taskProgress', views.taskProgressPage, name='taskProgressPage'),
