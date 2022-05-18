@@ -234,7 +234,7 @@ def deleteTask(request, id):
     task = Task.objects.get(id=id)
     project = task.project.id
     task.delete()
-    return projectPage(request,project)
+    return redirect("projectPage", id=project)
 
 @login_required(login_url='loginPage')
 def joinTask(request, id):
@@ -242,7 +242,8 @@ def joinTask(request, id):
     puser = request.user.profile
     puser.tasks.add(task)
     project = task.project.id
-    return projectPage(request,project)
+    return redirect("projectPage", id=project)
+    
 
 def errorPageNotFound(request, exception):
     return render(request,'collabapp/page-not-found.html')

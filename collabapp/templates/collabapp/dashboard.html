@@ -77,13 +77,13 @@
                                     <br><br>
                                     <div class="text-end">
                                         <a class="btn btn-success btn-sm" href="{% url 'projectPage' project.id %}"><i class="fa-solid fa-folder-open"></i> Open</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveProject"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveProject{{project.id}}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- popup when deleting -->
-                            <div class="modal" id="leaveProject" tab-index="-1">
+                            <div class="modal" id="leaveProject{{project.id}}" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
