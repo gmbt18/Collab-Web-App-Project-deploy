@@ -137,6 +137,7 @@ def projectPage(request, id):
     context = {'project':project, 'tasks_to_do': ttd, 'tasks_doing': td, "tasks_needs_checking": tnc, "tasks_done": tdn, 'user': puser}
     return render(request, 'collabapp/project-home.html', context)
 
+
 @login_required(login_url='loginPage')
 def projectNewPage(request):
     project_form = ProjectForm()
@@ -174,8 +175,13 @@ def projectInfoPage(request, id):
 @login_required(login_url='loginPage')
 def projectMembersPage(request, id):
     project = Project.objects.get(id=id)
-    context = {'project':project}
-    return render(request, 'collabapp/project-members.html', context)
+    [dataset] = Profile.objects.all()
+    
+    #Paano mag-filter ng context by ID huhu#
+    
+    return render(request, 'collabapp/project-members.html', {'project':project}, {'dataset':dataset})
+    
+
 
 @login_required(login_url='loginPage')
 def projectMembersAddPage(request, id):
@@ -274,5 +280,5 @@ def list_view(request):
 
     context ["dataset"] = Profile.objects.all()
         
-    return render(request, "project-members.html", context)
+    return render(request, "colabapp/roject-members.html", context)
 ##Prototype Dynamic User Display##
