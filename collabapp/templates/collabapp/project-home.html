@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +54,13 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
                                 </div>
                                 <div class="text-end mb-2 me-2">
@@ -136,10 +143,14 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
-                                    <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
-                                    <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
                                     {% if user not in task.getMembers %}
@@ -221,10 +232,14 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
-                                    <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
-                                    <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
                                     {% if user not in task.getMembers %}
@@ -307,10 +322,14 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
-                                    <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
-                                    <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
                                     {% if user not in task.getMembers %}

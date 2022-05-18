@@ -87,7 +87,7 @@ def registerPage(request):
 @login_required(login_url='loginPage')
 def accountPage(request):
     if request.method == "POST":
-        form = EditProfileForm(request.POST, instance=request.user.profile)
+        form = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
         u = EditUserForm(request.POST, instance=request.user)
         pw = PasswordChangeForm(data=request.POST, user=request.user )
         if form.is_valid() and u.is_valid():
@@ -104,6 +104,7 @@ def accountPage(request):
         form=EditProfileForm(instance=request.user.profile)
         u = EditUserForm(instance=request.user)
         pw = PasswordChangeForm(request.user)
+
         context = {'profile': form,'usr': u, 'pw':pw}
         return render(request, 'collabapp/account.html', context) 
 

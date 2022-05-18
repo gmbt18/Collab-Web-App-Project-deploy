@@ -28,7 +28,7 @@
                     
                     <!-- personal -->
                     <div class="col-4 mx-5">
-                        <form method = "POST" action = "">
+                        <form method = "POST" action = "" enctype = "multipart/form-data">
                                 {% csrf_token %}
                             
                             <h4><i class="fa-solid fa-address-card"></i> Personal</h4>
@@ -53,8 +53,7 @@
                             <br>
                             <div>
                                 <!-- <label for="email"><i class="fa-solid fa-at"></i> Email Address</label> -->
-                                <label>Profile Picture</label>
-                                <input class="form-control" type="file">
+                                {{profile.profile_picture | as_crispy_field}}
                                 
                             </div>
                             <br>

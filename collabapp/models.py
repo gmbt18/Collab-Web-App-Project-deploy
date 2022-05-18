@@ -53,6 +53,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=True)
     contact = models.CharField(max_length=100, null=True)
+    profile_picture = models.ImageField(null=True, blank=True, upload_to = '', default='/default_pfp.png')
     projects = models.ManyToManyField(Project, related_name= "members", blank=True)
     tasks = models.ManyToManyField(Task, related_name= "task_members", blank=True)
 
