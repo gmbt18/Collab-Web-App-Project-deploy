@@ -28,9 +28,12 @@ def dashboardPage(request):
 
     if request.method == 'POST':
         code = request.POST.get('code')
-        proj = Project.objects.get(code=code)
-        puser.projects.add(proj)
 
+
+        if Project.objects.filter(code=code).exists():
+            proj = Project.objects.get(code=code)
+            puser.projects.add(proj)
+            
         return redirect("dashboardPage")
 
     else:
