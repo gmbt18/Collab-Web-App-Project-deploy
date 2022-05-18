@@ -10,6 +10,7 @@ class Project(models.Model):
     code = models.CharField(max_length=255, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null = True)
     title = models.CharField(max_length=100, null=True)
+    description = models.CharField(max_length=1000, null=True)
     creation_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
