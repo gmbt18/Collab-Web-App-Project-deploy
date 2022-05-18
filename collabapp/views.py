@@ -33,8 +33,9 @@ def dashboardPage(request):
 
         return redirect("dashboardPage")
 
-    p = request.user.profile.projects.values_list('title', flat = True)
-    pl = list(p)
+    else:
+        p = request.user.profile.projects.all()
+        pl = list(p)
 
     context = {'projects': pl}
     return render(request, 'collabapp/dashboard.html', context)
@@ -114,15 +115,17 @@ def projectPage(request):
 @login_required(login_url='loginPage')
 def projectNewPage(request):
     project_form = ProjectForm()
-    user = Profile.objects.get(user=request.user)
+    user = request.user.profile
     
     if request.method == "POST":
         project_form = ProjectForm(request.POST)
         if project_form.is_valid():
             instance=project_form.save(commit=False)
             instance.owner=request.user
-            user.projects.add(instance.id)
             instance.save()
+            proj = Project.objects.get(code=instance.code)
+            user.projects.add(proj)
+            
 
             return redirect("dashboardPage")
 
