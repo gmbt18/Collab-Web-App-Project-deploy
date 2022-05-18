@@ -15,6 +15,17 @@ class Project(models.Model):
     def __str__(self):
         return self.title
     
+    @property
+    def getmembertotal(self):
+        m = self.members.all()
+        mem = list(m)
+        total = len(mem)
+        s = str(total)
+        if total > 1:
+            return "Members: " + s
+        else:
+            return "Member: " + s
+    
 class Profile(models.Model):
     user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=True)

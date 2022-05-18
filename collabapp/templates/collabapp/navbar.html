@@ -16,7 +16,9 @@
             <a class="nav-link text-light" href="{% url 'dashboardPage' %}"><i class="fa-solid fa-layer-group"></i>&nbsp; Projects</a>
             <ul class="nav flex-column ps-4">
                 <!-- project name -->
-                <a class="nav-link text-light" href="{% url 'projectPage' %}"><i class="fa-solid fa-folder"></i>&nbsp; Project 1</a>
+                {% for project in projects|slice:":3" %}
+                <a class="nav-link text-light" href="{% url 'projectPage' project.id%}"><i class="fa-solid fa-folder"></i>&nbsp; {{ project.title }}</a>
+                {% endfor %}
             </ul>
         </li>
         <li class="nav-item">

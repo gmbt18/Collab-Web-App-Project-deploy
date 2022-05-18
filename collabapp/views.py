@@ -24,7 +24,21 @@ def indexPage(request):
 
 @login_required(login_url='loginPage')
 def dashboardPage(request):
-    return render(request, 'collabapp/dashboard.html')
+    puser = request.user.profile
+
+    if request.method == 'POST':
+        code = request.POST.get('code')
+        proj = Project.objects.get(code=code)
+        puser.projects.add(proj)
+
+        return redirect("dashboardPage")
+
+    else:
+        p = request.user.profile.projects.all()
+        pl = list(p)
+
+    context = {'projects': pl}
+    return render(request, 'collabapp/dashboard.html', context)
 
 def loginPage(request):
 	if request.user.is_authenticated:
@@ -32,7 +46,7 @@ def loginPage(request):
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
-			password =request.POST.get('password')
+			password = request.POST.get('password')
 
 			user = authenticate(request, username=username, password=password)
 
@@ -95,22 +109,25 @@ def accountPage(request):
     
 
 @login_required(login_url='loginPage')
-def projectPage(request):
-    return render(request, 'collabapp/project-home.html')
+def projectPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-home.html', context)
 
 @login_required(login_url='loginPage')
 def projectNewPage(request):
     project_form = ProjectForm()
-    user = Profile.objects.get(user=request.user)
+    user = request.user.profile
     
     if request.method == "POST":
         project_form = ProjectForm(request.POST)
         if project_form.is_valid():
             instance=project_form.save(commit=False)
             instance.owner=request.user
-            user.projects.add(instance.id)
-            user.save()
             instance.save()
+            proj = Project.objects.get(code=instance.code)
+            user.projects.add(proj)
+            
 
             return redirect("dashboardPage")
 
@@ -118,20 +135,28 @@ def projectNewPage(request):
     return render(request, 'collabapp/project-new.html', context)
 
 @login_required(login_url='loginPage')
-def projectInfoPage(request):
-    return render(request, 'collabapp/project-info.html')
+def projectInfoPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-info.html', context)
 
 @login_required(login_url='loginPage')
-def projectMembersPage(request):
-    return render(request, 'collabapp/project-members.html')
+def projectMembersPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-members.html', context)
 
 @login_required(login_url='loginPage')
-def projectMembersAddPage(request):
-    return render(request, 'collabapp/project-members-add.html')
+def projectMembersAddPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-members-add.html', context)
 
 @login_required(login_url='loginPage')
-def projectHistoryPage(request):
-    return render(request, 'collabapp/project-history.html')
+def projectHistoryPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-history.html', context)
 
 @login_required(login_url='loginPage')
 def taskAddPage(request):
@@ -153,6 +178,21 @@ def taskEditPage(request):
 @login_required(login_url='loginPage')    
 def taskProgressPage(request):
     return render(request, 'collabapp/task-progress.html')
+  
+@login_required(login_url='loginPage')    
+def navPage(request):
+    p = request.user.profile.projects.all()
+    pl = list(p)
 
+    context = {'project': pl}
+    return render(request, 'collabapp/navbar.html', context)
+
+@login_required(login_url='loginPage')    
+def leaveProject(request, id):
+    user = request.user.profile
+    proj = Project.objects.get(id=id)
+    user.projects.remove(proj)
+    return redirect("dashboardPage")
+  
 def errorPageNotFound(request, exception):
     return render(request,'collabapp/page-not-found.html')
