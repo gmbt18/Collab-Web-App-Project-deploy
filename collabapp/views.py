@@ -168,7 +168,10 @@ def projectInfoPage(request, id):
 @login_required(login_url='loginPage')
 def projectMembersPage(request, id):
     project = Project.objects.get(id=id)
-    context = {'project':project}
+    m = project.members.all()
+    mem = list(m)
+
+    context = {'project':project, 'members': mem, 'project': project}
     return render(request, 'collabapp/project-members.html', context)
 
 @login_required(login_url='loginPage')
