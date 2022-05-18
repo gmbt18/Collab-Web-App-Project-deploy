@@ -155,7 +155,7 @@ def projectInfoPage(request, id):
         form = EditProjectForm(request.POST, instance=project)
         if form.is_valid:
             form.save()
-            return redirect("projectPage")
+            return redirect("projectPage", id=project.id)
 
     context = {'project':project, 'form': form}
     return render(request, 'collabapp/project-info.html', context)
@@ -196,8 +196,19 @@ def taskAddPage(request, id):
     return render(request, 'collabapp/task-add.html', context)
 
 @login_required(login_url='loginPage')
-def taskEditPage(request):
-    return render(request, 'collabapp/task-edit.html')
+def taskEditPage(request, id, td):
+    project = Project.objects.get(id=id)
+    task = Task.objects.get(id=td)
+    form = EditTaskForm(instance=task)
+
+    if request.method == 'POST':
+        form = EditTaskForm(request.POST, instance=task)
+        if form.is_valid:
+            form.save()
+            return redirect("projectPage", id=project.id)
+
+    context = {'project':project, 'task': task, 'form': form}
+    return render(request, 'collabapp/task-edit.html', context)
     
 @login_required(login_url='loginPage')    
 def taskProgressPage(request):

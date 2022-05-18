@@ -56,7 +56,7 @@
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2">
-                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <a class="btn btn-success fs-6 lh-1 me-2" href="{% url 'deleteTask' task.id %}"><i class="fa-solid fa-bars-progress"></i> Delete</a>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                     <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2">
-                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                    <a class="btn btn-warning fs-6 lh-1 me-2" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <a class="btn btn-success fs-6 lh-1 me-2" href="{% url 'deleteTask' task.id %}"><i class="fa-solid fa-bars-progress"></i> Delete</a>
                                 </div>
                             </div>

@@ -29,7 +29,8 @@ class TaskForm(ModelForm):
 
         labels = {
             'name' : 'Task Name',
-            'due_date' : 'Due Date'
+            'due_date' : 'Due Date',
+            'status': 'Status'
         }
 
 class EditUserForm(UserChangeForm):
@@ -58,4 +59,17 @@ class EditProjectForm(ModelForm):
             'title': 'Project Name',
             'code': 'Project Code',
             'description': 'Project Description'
+        }
+
+class EditTaskForm(ModelForm):
+    status = forms.ChoiceField(choices=Task.STATUS)
+
+    class Meta:
+        model = Task
+        fields = ['name', 'due_date', 'status']
+
+        labels = {
+            'name' : 'Task Name',
+            'due_date' : 'Due Date',
+            'status' : 'Status'
         }
