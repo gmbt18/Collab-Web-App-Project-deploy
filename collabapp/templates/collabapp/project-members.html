@@ -56,9 +56,11 @@
                                     <td>
                                         <ul>
                                             {% for task in member.tasks.all %}
-                                            <li>{{task.name}}</li>
+                                                {% if task in project.tasks.all %}
+                                                    <li>{{task.name}}</li>
+                                                {% endif %}
                                             {% empty %}
-                                            <li>None</li>
+                                                <li>None</li>
                                             {% endfor %}
                                         </ul>
                                     </td>
