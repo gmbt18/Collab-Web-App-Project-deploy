@@ -17,5 +17,6 @@ urlpatterns = [
     path('project/<int:id>/taskAdd', views.taskAddPage, name='taskAddPage'),
     path('taskEdit', views.taskEditPage, name='taskEditPage'),
     path('taskProgress', views.taskProgressPage, name='taskProgressPage'),
-    path('leave/<int:id>/', views.leaveProject, name = 'leave')
+    path('leave/<int:id>/', views.leaveProject, name = 'leave'),
+    path('delete/<int:id>/', views.deleteTask, name = 'deleteTask')
 ]

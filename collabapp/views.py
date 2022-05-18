@@ -210,6 +210,12 @@ def leaveProject(request, id):
     proj = Project.objects.get(id=id)
     user.projects.remove(proj)
     return redirect("dashboardPage")
-  
+
+@login_required(login_url='loginPage')
+def deleteTask(request, id):
+    task = Task.objects.get(id=id)
+    task.delete()
+    return redirect(request, "projectPage")
+
 def errorPageNotFound(request, exception):
     return render(request,'collabapp/page-not-found.html')
