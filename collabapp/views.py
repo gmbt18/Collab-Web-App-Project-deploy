@@ -178,7 +178,7 @@ def taskEditPage(request):
 @login_required(login_url='loginPage')    
 def taskProgressPage(request):
     return render(request, 'collabapp/task-progress.html')
-
+  
 @login_required(login_url='loginPage')    
 def navPage(request):
     p = request.user.profile.projects.all()
@@ -193,3 +193,6 @@ def leaveProject(request, id):
     proj = Project.objects.get(id=id)
     user.projects.remove(proj)
     return redirect("dashboardPage")
+  
+def errorPageNotFound(request, exception):
+    return render(request,'collabapp/page-not-found.html')
