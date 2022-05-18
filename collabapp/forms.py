@@ -44,7 +44,7 @@ class EditUserForm(UserChangeForm):
 class EditProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ['name','contact','projects']
+        fields = ['name','contact', 'profile_picture']
 
         labels = {
             'contact' : 'Contact No.',

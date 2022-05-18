@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,19 +54,28 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask1"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask1"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
                             </div>
 
                             <!-- popup for delete -->
-                            <div class="modal" id="deleteTask" tab-index="-1">
+                            <div class="modal" id="deleteTask1" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -84,7 +94,7 @@
                             </div>
 
                             <!-- popup for leave -->
-                            <div class="modal" id="leaveTask" tab-index="-1">
+                            <div class="modal" id="leaveTask1" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -95,7 +105,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>
@@ -133,21 +143,28 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
-                                    <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
-                                    <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask2"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask2"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
                             </div>
 
                             <!-- popup for delete -->
-                            <div class="modal" id="deleteTask" tab-index="-1">
+                            <div class="modal" id="deleteTask2" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -166,7 +183,7 @@
                             </div>
 
                             <!-- popup for leave -->
-                            <div class="modal" id="leaveTask" tab-index="-1">
+                            <div class="modal" id="leaveTask2" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -177,7 +194,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>
@@ -215,21 +232,28 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
-                                    <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
-                                    <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask3"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask3"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
                             </div>
 
                             <!-- popup for delete -->
-                            <div class="modal" id="deleteTask" tab-index="-1">
+                            <div class="modal" id="deleteTask3" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -248,7 +272,7 @@
                             </div>
 
                             <!-- popup for leave -->
-                            <div class="modal" id="leaveTask" tab-index="-1">
+                            <div class="modal" id="leaveTask3" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -259,7 +283,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>
@@ -298,21 +322,28 @@
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
                                     {% for member in task.getMembers %}
-                                        {{member.name}}
+                                        {% if member.profile_picture %}
+                                            <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% else %}
+                                            <img src="{% static 'static/default_pfp.png' %}" alt="" style="height:30px;width:30px;border-radius:100%;">
+                                        {% endif %}
+                                    {% empty %}
+                                        <p>None</p>
                                     {% endfor %}
-                                    <img src="https://media.wired.com/photos/5ed6891ed9fb171733fd7840/1:1/w_1287,h_1287,c_limit/Ideas-Zuckerberg-1200875675.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
-                                    <img src="http://pm1.narvii.com/7851/7cb92cc8737923f2547fbd2e69f32d068fe6f376r1-532-532v2_00.jpg" alt="" style="height:30px;width:30px;border-radius:100%;">
                                 </div>
                                 <div class="text-end mb-2 me-2">
-                                    <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
-                                    <!-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button> -->
+                                    {% if user not in task.getMembers %}
+                                        <a class="btn btn-success btn-sm" href="{% url 'joinTask' task.id %}"><i class="fa-solid fa-plus"></i> Join</a>
+                                    {% else %}
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#leaveTask4"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</button>
+                                    {% endif %}
                                     <a class="btn btn-warning btn-sm" href="{% url 'taskEditPage' project.id task.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTask4"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
                             </div>
-                            
+                                
                             <!-- popup for delete -->
-                            <div class="modal" id="deleteTask" tab-index="-1">
+                            <div class="modal" id="deleteTask4" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -331,7 +362,7 @@
                             </div>
 
                             <!-- popup for leave -->
-                            <div class="modal" id="leaveTask" tab-index="-1">
+                            <div class="modal" id="leaveTask4" tab-index="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -342,7 +373,7 @@
                                             <p>Are you sure you want to leave this task?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-danger" href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
+                                            <a class="btn btn-danger" href="{% url 'leaveTask' task.id %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Cancel</button>
                                         </div>
                                     </div>
