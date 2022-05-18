@@ -16,6 +16,10 @@ urlpatterns = [
     path('project/<int:id>/membersadd', views.projectMembersAddPage, name='projectMembersAddPage'),
     path('project/<int:id>/history', views.projectHistoryPage, name='projectHistoryPage'),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 2c73563fa449e69b178ce020b4c8afd50fa5bd1f
 =======
     
 >>>>>>> 2c73563fa449e69b178ce020b4c8afd50fa5bd1f
