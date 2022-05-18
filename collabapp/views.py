@@ -186,3 +186,10 @@ def navPage(request):
 
     context = {'project': pl}
     return render(request, 'collabapp/navbar.html', context)
+
+@login_required(login_url='loginPage')    
+def leaveProject(request, id):
+    user = request.user.profile
+    proj = Project.objects.get(id=id)
+    user.projects.remove(proj)
+    return redirect("dashboardPage")
