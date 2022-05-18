@@ -55,6 +55,36 @@
                             </tr>
                             
                         </tbody>
+
+
+                        ##Prototype Dynamic User Display##
+                        ##Prototype Dynamic User Display##
+                        <tbody>
+                            <!-- sample member -->
+                            <tr>
+                                <td><img class="rounded" src="https://liquipedia.net/commons/images/2/28/League_Infobox_Kha%27Zix.jpg" alt="" style="width:100px;height:100px;object-fit:cover;"></td>
+                                <!-- Iterate over object_list -->
+                                {% for object in object_list %}
+                                 <!-- Display Objects -->
+                                <td>{{ data.name }}</td> ##UserName
+                                <td>{{ data.owner }}</td> ##LeaderName
+                                <td>
+                                    <ul>
+                                        <li>{{ data.tasks }}</li> ##Tasks##
+                                        <li>Task 2</li>
+                                        <li>Task 3</li>
+                                    </ul>
+                                </td>
+                                <!-- <td class="text-center align-middle">
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#removeMember"><i class="fa-solid fa-arrow-right-from-bracket"></i> Remove</button>
+                                </td> -->
+                            </tr>
+                            
+                        </tbody>
+                        ##Prototype Dynamic User Display##
+                        ##Prototype Dynamic User Display##
+
+
                     </table>
 
                     <!-- <div class="text-end">

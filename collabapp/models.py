@@ -57,5 +57,7 @@ class Profile(models.Model):
     projects = models.ManyToManyField(Project, related_name= "members", blank=True)
     tasks = models.ManyToManyField(Task, related_name= "task_members", blank=True)
 
+
     def __str__(self):
         return self.name
+

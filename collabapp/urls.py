@@ -1,3 +1,4 @@
+from collections import UserList
 from django.urls import path
 
 from django.conf.urls.static import static
@@ -25,6 +26,7 @@ urlpatterns = [
     path('delete/<int:id>/', views.deleteTask, name = 'deleteTask'),
     path('join/<int:id>/', views.joinTask, name = 'joinTask'),
     path('leaveTask/<int:id>/', views.leaveTask, name = 'leaveTask')
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

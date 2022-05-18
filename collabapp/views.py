@@ -1,3 +1,4 @@
+import code
 from distutils import log
 from multiprocessing import context
 from django.shortcuts import render, redirect
@@ -7,6 +8,11 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+
+
+    ##Prototype Dynamic User Display##
+from .models import Profile,Project,Task
+    ##Prototype Dynamic User Display##
 
 
 from .models import *
@@ -260,3 +266,13 @@ def leaveTask(request, id):
 
 def errorPageNotFound(request, exception):
     return render(request,'collabapp/page-not-found.html')
+
+
+##Prototype Dynamic User Display##
+def list_view(request):
+    context ={}
+
+    context ["dataset"] = Profile.objects.all()
+        
+    return render(request, "project-members.html", context)
+##Prototype Dynamic User Display##
