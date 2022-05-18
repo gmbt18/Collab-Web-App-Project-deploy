@@ -111,10 +111,20 @@ def accountPage(request):
 @login_required(login_url='loginPage')
 def projectPage(request, id):
     project = Project.objects.get(id=id)
-    tasks = Task.objects.filter(project__id=project.id)
-    tl = list(tasks)
 
-    context = {'project':project, 'tasks': tl }
+    tasks_to_do = Task.objects.filter(project__id=project.id).filter(status="To-Do")
+    ttd = list(tasks_to_do)
+
+    tasks_doing = Task.objects.filter(project__id=project.id).filter(status="Doing")
+    td = list(tasks_doing)
+
+    tasks_needs_checking = Task.objects.filter(project__id=project.id).filter(status="Need Checking")
+    tnc = list(tasks_needs_checking)
+
+    tasks_done = Task.objects.filter(project__id=project.id).filter(status="Done")
+    tdn = list(tasks_done)
+
+    context = {'project':project, 'tasks_to_do': ttd, 'tasks_doing': td, "tasks_needs_checking": tnc, "tasks_done": tdn}
     return render(request, 'collabapp/project-home.html', context)
 
 @login_required(login_url='loginPage')

@@ -21,9 +21,11 @@ class ProjectForm(ModelForm):
         }
 
 class TaskForm(ModelForm):
+    status = forms.ChoiceField(choices=Task.STATUS)
+
     class Meta:
         model = Task
-        fields = ['name', 'due_date']
+        fields = ['name', 'due_date', 'status']
 
         labels = {
             'name' : 'Task Name',
