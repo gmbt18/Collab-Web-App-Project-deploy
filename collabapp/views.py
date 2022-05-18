@@ -109,8 +109,10 @@ def accountPage(request):
     
 
 @login_required(login_url='loginPage')
-def projectPage(request):
-    return render(request, 'collabapp/project-home.html')
+def projectPage(request, id):
+    project = Project.objects.get(id=id)
+    context = {'project':project}
+    return render(request, 'collabapp/project-home.html', context)
 
 @login_required(login_url='loginPage')
 def projectNewPage(request):
@@ -168,3 +170,11 @@ def taskEditPage(request):
 @login_required(login_url='loginPage')    
 def taskProgressPage(request):
     return render(request, 'collabapp/task-progress.html')
+
+@login_required(login_url='loginPage')    
+def navPage(request):
+    p = request.user.profile.projects.all()
+    pl = list(p)
+
+    context = {'project': pl}
+    return render(request, 'collabapp/navbar.html', context)
