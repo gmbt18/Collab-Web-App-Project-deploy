@@ -13,10 +13,11 @@ class CreateUserForm(UserCreationForm):
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        fields = ['title']
+        fields = ['title', 'code']
 
         labels = {
-            'title' : 'Project Name'
+            'title' : 'Project Name',
+            'code': 'Project Code'
         }
 
 class TaskForm(ModelForm):

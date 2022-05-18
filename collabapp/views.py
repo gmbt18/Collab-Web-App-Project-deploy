@@ -24,7 +24,20 @@ def indexPage(request):
 
 @login_required(login_url='loginPage')
 def dashboardPage(request):
-    return render(request, 'collabapp/dashboard.html')
+    puser = request.user.profile
+
+    if request.method == 'POST':
+        code = request.POST.get('code')
+        proj = Project.objects.get(code=code)
+        puser.projects.add(proj)
+
+        return redirect("dashboardPage")
+
+    p = request.user.profile.projects.values_list('title', flat = True)
+    pl = list(p)
+
+    context = {'projects': pl}
+    return render(request, 'collabapp/dashboard.html', context)
 
 def loginPage(request):
 	if request.user.is_authenticated:
@@ -32,7 +45,7 @@ def loginPage(request):
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
-			password =request.POST.get('password')
+			password = request.POST.get('password')
 
 			user = authenticate(request, username=username, password=password)
 
@@ -109,7 +122,6 @@ def projectNewPage(request):
             instance=project_form.save(commit=False)
             instance.owner=request.user
             user.projects.add(instance.id)
-            user.save()
             instance.save()
 
             return redirect("dashboardPage")
