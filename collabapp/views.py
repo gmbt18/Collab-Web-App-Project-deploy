@@ -153,3 +153,6 @@ def taskEditPage(request):
 @login_required(login_url='loginPage')    
 def taskProgressPage(request):
     return render(request, 'collabapp/task-progress.html')
+
+def errorPageNotFound(request, exception):
+    return render(request,'collabapp/page-not-found.html')
