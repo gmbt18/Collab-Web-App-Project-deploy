@@ -18,78 +18,36 @@
     
             <div class="col-10 min-vh-100 px-5 py-4 bg-light">
                {% include 'collabapp/project-header.html' %}
-               <hr>
+                <hr>
                 <br>
 
-                <div class="container py-2 border">
-
-                   <h3><i class="fa-solid fa-gear"></i> Project Information</h3>
-                   <br>
-    
-                    <div class="row text-center">
-                        <div class="col py-3 mx-2 border">
-                           <h4><i class="fa-solid fa-sliders"></i> Project details</h4>
-
-                            <div class="container bg-white p-3 mb-2 text-start" style="min-height:300px;">
-                                <textarea class="form-control" rows="9"></textarea>
+                <div class="container w-75 justify-content-center">
+                    
+                        <form method = "POST" action = "">
+                                {% csrf_token %}
+                            <br>
+                            <h4><i class="fa-solid fa-gear"></i> Project Information</h4>
+                            <hr>
+                            <div>
+                                <label for="name"> Project name</label>
+                                <input class="form-control" type="text" placeholder="Project name">
                             </div>
+                            <br>
+                            <div>
+                                <label for="name"> Project code</label>
+                                <input class="form-control" type="text" placeholder="Project code">
+                            </div>
+                            <br>
+                            <div>
+                                <label for="name"> Project Description</label>
+                                <textarea class="form-control" name="projectDesc" id="projectDesc" rows="3" placeholder="Project description"></textarea>
+                            </div>
+                            <br>
                             <div class="text-end">
-                               <a class="btn btn-success" href=""><i class="fa-solid fa-save"></i> Save</a>
+                                <br>
+                            <button class="btn btn-success border-dark" type="submit"><i class="fa-solid fa-floppy-disk"></i> &nbsp;Save changes</button>
                             </div>
-                        </div>
-                        
-                        <div class="col py-3 mx-2 border">
-                           <h4><i class="fa-solid fa-user"></i> Members</h4>
-
-                            <div class="container bg-white p-3 mb-2 text-start" style="min-height:300px;">
-                                
-                                <div class="container bg-light py-1 px-2 border">
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            <p class="my-auto">Jose P. Rizal</p>
-                                        </div>
-                                        <!-- <div class="col align-self-end text-end">
-                                            <div class="text-end">
-                                                <a class="btn btn-sm btn-warning" href=""><i class="fa-solid fa-fw fa-pen-to-square"></i></a>
-                                                <a class="btn btn-sm btn-danger" href=""><i class="fa-solid fa-fw fa-x"></i></a>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="text-end">
-                               <!-- <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a>                             -->
-                               <a class="btn btn-warning" href="{% url 'projectMembersPage' project.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>                            
-                            </div>
-                        </div>
-    
-                        <div class="col py-3 mx-2 border">
-                           <h4><i class="fa-solid fa-list-check"></i> Tasks</h4>
-
-                            <div class="container bg-white p-3 mb-2 text-start" style="min-height:300px;">
-
-                                <div class="container bg-light py-1 px-2 border">
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            <p class="my-auto">Task 1</p>
-                                        </div>
-                                        <!-- <div class="col align-self-end text-end">
-                                            <div class="text-end">
-                                                <a class="btn btn-sm btn-warning" href=""><i class="fa-solid fa-fw fa-pen-to-square"></i></a>
-                                                <a class="btn btn-sm btn-danger" href=""><i class="fa-solid fa-fw fa-x"></i></a>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="text-end">
-                               <!-- <a class="btn btn-success" href=""><i class="fa-solid fa-plus"></i> Add</a> -->
-                               <a class="btn btn-warning" href="{% url 'projectPage' project.id %}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>                            
-                            </div>
-                        </div>
-                    </div>
+                        </form>   
 
                 </div>
 
