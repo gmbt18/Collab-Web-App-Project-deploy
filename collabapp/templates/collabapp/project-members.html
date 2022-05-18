@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,28 +39,37 @@
                         </thead>
                         <tbody>
                             <!-- sample member -->
-                            <tr>
-                                <td><img class="rounded" src="https://liquipedia.net/commons/images/2/28/League_Infobox_Kha%27Zix.jpg" alt="" style="width:100px;height:100px;object-fit:cover;"></td>
-                                <td>Person Name</td>
-                                <td>Leader</td>
-                                <td>
-                                    <ul>
-                                        <li>Task 1</li>
-                                        <li>Task 2</li>
-                                        <li>Task 3</li>
-                                    </ul>
-                                </td>
-                                <!-- <td class="text-center align-middle">
-                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#removeMember"><i class="fa-solid fa-arrow-right-from-bracket"></i> Remove</button>
-                                </td> -->
-                            </tr>
+                            {% for member in members %}
+                                <tr>
+                                    {% if member.profile_picture %}
+                                        <td><img class="rounded" src="{{member.profile_picture.url}}" alt="" style="width:100px;height:100px;object-fit:cover;"></td>
+                                    {% else %}
+                                        <td><img class="rounded" src="{% static 'static/default_pfp.png' %}" alt="" style="width:100px;height:100px;object-fit:cover;"></td>
+                                    {% endif %}
+                                    <td>{{member.name}}</td>
+                                    {% if member.user == project.owner %}
+                                        <td>Owner</td>
+                                    {% else %}
+                                        <td>Member</td>
+                                    {% endif %}
+
+                                    <td>
+                                        <ul>
+                                            {% for task in member.tasks.all %}
+                                            <li>{{task.name}}</li>
+                                            {% empty %}
+                                            <li>None</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <!-- <td class="text-center align-middle">
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#removeMember"><i class="fa-solid fa-arrow-right-from-bracket"></i> Remove</button>
+                                    </td> -->
+                                </tr>
+                            {% endfor %}
                             
                         </tbody>
                     </table>
-
-                    <!-- <div class="text-end">
-                        <a class="btn btn-success" href="{% url 'projectMembersAddPage' project.id %}"><i class="fa-solid fa-plus"></i> Add</a>                            
-                    </div> -->
 
                 </div>
 
