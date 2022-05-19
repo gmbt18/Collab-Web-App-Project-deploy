@@ -223,6 +223,15 @@ def leaveProject(request, id):
     user = request.user.profile
     proj = Project.objects.get(id=id)
     user.projects.remove(proj)
+
+    m = proj.members.all()
+    mem = list(m)
+    total = len(mem)
+
+    if total == 0:
+        proj.delete()
+
+
     return redirect("dashboardPage")
 
 @login_required(login_url='loginPage')
