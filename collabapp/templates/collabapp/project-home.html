@@ -53,7 +53,7 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
-                                    {% for member in task.getMembers %}
+                                    {% for member in task.getMembers|slice:":3" %}
                                         {% if member.profile_picture %}
                                             <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;object-fit:cover;">
                                         {% else %}
@@ -142,7 +142,7 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
-                                    {% for member in task.getMembers %}
+                                    {% for member in task.getMembers|slice:":3" %}
                                         {% if member.profile_picture %}
                                             <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
                                         {% else %}
@@ -231,7 +231,7 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
-                                    {% for member in task.getMembers %}
+                                    {% for member in task.getMembers|slice:":3" %}
                                         {% if member.profile_picture %}
                                             <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
                                         {% else %}
@@ -321,7 +321,7 @@
                                 <div class="card-body px-3 py-2 mb-3">
                                     <b><i class="fa-solid fa-calendar-day"></i> Due Date:</b><p>{{task.due_date}}</p>
                                     <b><i class="fa-solid fa-user mb-2"></i> Members:</b><br>
-                                    {% for member in task.getMembers %}
+                                    {% for member in task.getMembers|slice:":3" %}
                                         {% if member.profile_picture %}
                                             <img src="{{member.profile_picture.url}}" alt="" style="height:30px;width:30px;border-radius:100%;">
                                         {% else %}
