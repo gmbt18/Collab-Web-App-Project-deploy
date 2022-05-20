@@ -13,73 +13,71 @@
 
 
     <!-- contenthere -->
-    <div class="container-fluid bg-light vh-100 px-0">
-        <div class="container-fluid bg-secondary mx-0" style="height:8%"></div>
-        <div class="container-fluid" style="height:7%;"></div>
 
-        <div class="container-fluid bg-dark p-3 w-50" style="height:65%">
+    <div class="container-fluid">
 
-            <h5 class="text-white px-3">Register</h5>
-            <hr class="text-white">
+        <div class="row align-items-center my-auto bg-light vh-100">
+            
+            <div class="col">
+                
+                <div class="container-fluid bg-dark p-3 w-50">
 
-            <form method = "POST" action = "">
-                {% csrf_token %}
-                <div class="row bg-dark mx-auto">
-
-                    <div class="col text-light">
-
-                        <div class="mb-3">
-                            <!-- <label for="usernameInput"><i class="fa-solid fa-user"></i> Username</label></br> -->
-                            {{form.username | as_crispy_field}}
-                        </div>
-                        <div class="mb-3">
-                            <!-- <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br> -->
-                            {{form.email | as_crispy_field}}
-                        </div>
-                    </div>
+                    <h5 class="text-white px-3">Register</h5>
+                    <hr class="text-white">
         
-                    <div class="col text-light">
+                    <form method = "POST" action = "">
+                        {% csrf_token %}
+                        <div class="row bg-dark mx-auto">
         
+                            <div class="col text-light">
         
-                        <div>
-                            <!-- <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br> -->
-                            {{form.password1 | as_crispy_field}}
-                        </div>
-        
-                        <div>
-                            <!-- <label for="passwordInput"><i class="fa-solid fa-key"></i> Confirm Password</label></br> -->
-                            {{form.password2 | as_crispy_field}}
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <br><a class="text-decoration-none text-muted" href="{% url 'loginPage' %}">Log in</a>
+                                <div class="mb-3">
+                                    <!-- <label for="usernameInput"><i class="fa-solid fa-user"></i> Username</label></br> -->
+                                    {{form.username | as_crispy_field}}
+                                </div>
+                                <div class="mb-3">
+                                    <!-- <label for="emailInput"><i class="fa-solid fa-at"></i> Email Address</label></br> -->
+                                    {{form.email | as_crispy_field}}
+                                </div>
                             </div>
-    
-                            <div class="col text-end">
-                                <br>
-                                <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
-                                <input class="btn btn-success border-dark" type="submit" value="Register">
+                
+                            <div class="col text-light">
+                
+                
+                                <div>
+                                    <!-- <label for="passwordInput"><i class="fa-solid fa-key"></i> Password</label></br> -->
+                                    {{form.password1 | as_crispy_field}}
+                                </div>
+                
+                                <div>
+                                    <!-- <label for="passwordInput"><i class="fa-solid fa-key"></i> Confirm Password</label></br> -->
+                                    {{form.password2 | as_crispy_field}}
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col">
+                                        <br><a class="text-decoration-none text-muted" href="{% url 'loginPage' %}">Log in</a>
+                                    </div>
+            
+                                    <div class="col text-end">
+                                        <br>
+                                        <!-- <button type="submit" class="btn btn-success border-dark">Log In</button> -->
+                                        <input class="btn btn-success border-dark" type="submit" value="Register">
+                                    </div>
+        
+                                </div>
+                                
                             </div>
-
                         </div>
                         
-                    </div>
+                    </form>
+        
                 </div>
                 
-            </form>
-
-        </div>
-
-
-
-        <div class="container-fluid" style="height:8%;"></div>
-
-        <div class="container-fluid bg-secondary mx-0" style="height:12%;">
-            <br><br>
+            </div>
+    
         </div>
     </div>
-
 
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
