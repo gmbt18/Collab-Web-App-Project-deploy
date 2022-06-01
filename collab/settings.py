@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+import django_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-^^97h%w3zwkd_whmb681*s*idigdth$k(6gx7rr-b8$8l#ivp@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['collabapp-cs122.heroku.com']
 
 
 # Application definition
@@ -80,10 +82,21 @@ WSGI_APPLICATION = 'collab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME' : 'd2shphjf9ijbhs',
+        'USER' : 'pzddsvoigxcunu',
+        'PASSWORD' : '7c2bc165f3c74c3ce097abee91a95015eaf2886054a7bc3de53cd9ce746f9bbd',
+        'HOST' : 'ec2-54-211-255-161.compute-1.amazonaws.com',
+        'PORT' : '5432',
     }
 }
 
@@ -124,7 +137,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+django_heroku.settings(locals())
 
 MEDIA_URL = '/images/'
 
