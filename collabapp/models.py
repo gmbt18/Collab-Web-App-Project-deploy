@@ -1,5 +1,5 @@
 from time import timezone
-from tkinter import CASCADE
+# from tkinter import CASCADE
 from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
